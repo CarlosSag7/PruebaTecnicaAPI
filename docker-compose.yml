@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: my-secret-pw
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+
+  api:
+    build: ./api
+    container_name: flask_api
+    environment:
+      MYSQL_HOST: mysql_container
+      MYSQL_USER: root
+      MYSQL_PASSWORD: my-secret-pw
+      MYSQL_DB: my_database
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
