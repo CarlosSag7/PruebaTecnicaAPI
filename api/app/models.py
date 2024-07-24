@@ -14,15 +14,15 @@ def get_movie_by_id(mysql: MySQL, movie_id: int):
     cursor.close()
     return movie
 
-def add_movie(mysql: MySQL, autor: str, descripcion: str, fecha_de_estreno: str):
+def add_movie(mysql: MySQL, director: str, descripcion: str, fecha_de_estreno: str):
     cursor = mysql.connection.cursor()
-    cursor.execute("INSERT INTO my_movies (Autor, Descripcion, Fecha_de_Estreno) VALUES (%s, %s, %s)", (autor, descripcion, fecha_de_estreno))
+    cursor.execute("INSERT INTO my_movies (director, Descripcion, Fechaestreno) VALUES (%s, %s, %s)", (director, descripcion, fecha_de_estreno))
     mysql.connection.commit()
     cursor.close()
 
-def update_movie(mysql: MySQL, movie_id: int, autor: str, descripcion: str, fecha_de_estreno: str):
+def update_movie(mysql: MySQL, movie_id: int, director: str, descripcion: str, fecha_de_estreno: str):
     cursor = mysql.connection.cursor()
-    cursor.execute("UPDATE my_movies SET Autor = %s, Descripcion = %s, Fecha_de_Estreno = %s WHERE ID = %s", (autor, descripcion, fecha_de_estreno, movie_id))
+    cursor.execute("UPDATE my_movies SET director = %s, Descripcion = %s, Fecha_de_Estreno = %s WHERE ID = %s", (director, descripcion, fecha_de_estreno, movie_id))
     mysql.connection.commit()
     cursor.close()
 

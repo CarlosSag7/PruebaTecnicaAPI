@@ -15,3 +15,5 @@ Este proyecto implementa una API utilizando Flask que se conecta a una base de d
    ```bash
    git clone <URL_DEL_REPOSITORIO>
    cd <NOMBRE_DEL_REPOSITORIO>
+
+   ![alt text](image.png)
