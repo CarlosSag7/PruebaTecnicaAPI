@@ -15,6 +15,9 @@ RUN apt-get update && \
 # Instala las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Instala mysql-connector-python
+RUN pip install mysql-connector-python
+
 # Copia el resto de los archivos del proyecto al contenedor
 COPY . .
 
